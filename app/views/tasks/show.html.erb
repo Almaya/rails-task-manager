@@ -3,5 +3,9 @@
 <%= link_to 'Delete task', task_path(@task),
     data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
 <p><%= @task.details %></p>
-<p><%= @task.completed == true ? 'Done' : 'Not done' %></p>
+<% if @task.completed? %>
+  <p><i class="fa-regular fa-square-check"></i> This task is complete!</p>
+<% else %>
+  <p><i class="fa-regular fa-square"></i> This task has not yet been completed</p>
+<% end %>
 <%= link_to 'Back to list', tasks_path %>
